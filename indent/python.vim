@@ -2,7 +2,7 @@
 " Language:	    Python
 " Maintainer:	    Chris Lasher <chris.lasher@gmail.com>
 " Original Author:  David Bustos <bustos@caltech.edu>
-" Contributing Authors: Eric McSween <em@tomcomm.de>, dantezhu <zny2008@gmail.com>
+" Contributing Authors: Eric McSween <em@tomcomm.de>, Zhu Nianyang <zny2008@gmail.com>
 " Code Repository:  https://github.com/gotgenes/vim-yapif
 " Bug Tracker:      https://github.com/gotgenes/vim-yapif/issues
 " Last Modified:    2012-03-15
