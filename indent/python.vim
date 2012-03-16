@@ -150,7 +150,7 @@ function! GetPythonIndent(lnum)
         if match(getline(parlnum), '[([{]\s*$', parcol - 1) != -1
             if closing_paren
                 if match(getline(a:lnum), ')\s*:') != -1 &&
-                            \ match(getline(parlnum), '\(def\|class\|if\|elif\|while\)\(\s\+\|(\)') != -1
+                            \ match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\)\(\s\+\|(\)') != -1
                     return indent(parlnum) + &sw
                 elseif match(getline(parlnum), '\(\a\|\d\|_\|\.)\s*(\s*$', 0) != -1
                     return indent(parlnum) + &sw
@@ -158,7 +158,7 @@ function! GetPythonIndent(lnum)
                     return indent(parlnum)
                 endif
             else
-                if match(getline(parlnum), '\(def\|class\|if\|elif\|while\)\(\s\+\|(\)') != -1
+                if match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\)\(\s\+\|(\)') != -1
                     return indent(parlnum) + &sw * 2
                 else
                     return indent(parlnum) + &sw
