@@ -8,9 +8,8 @@ off of `a script by Eric McSween
 script by Zhu Nianyang
 <http://www.vim.org/scripts/script.php?script_id=3461>`_.
 
-This style prefers to align the opening and closing
-parentheses/braces/brackets on the same column when continuing long
-lines like so::
+When continuing long lines, this style prefers to align the opening and
+closing parentheses/braces/brackets on the same column like so::
 
     l_one = [1, 2, 3
              4, 5
@@ -23,17 +22,19 @@ lines like so::
         pass
 
 
-    myobj.a_cool_method_call(arg1, arg2, arg3, arg4,
-                             arg5, arg6
-                            )
+    myobj.a_method_call(arg1, arg2, arg3, arg4,
+                        arg5, arg6
+                       ):
+        pass
+
 
 In this manner, the indentation follows the `Google Python Style Guide
 <http://google-styleguide.googlecode.com/svn/trunk/pyguide.html>`_.
 
-For lists, tuples, dictionaries (and assignments to these structures) as
-well as function or method calls, when parentheses/braces/brackets
-appear at the end of a line alone, this style will indent the closing
-parenthesis/brace/bracket at the same level::
+For lists, tuples, dictionaries (and assignments to these structures),
+when parentheses/braces/brackets appear at the end of a line alone, this
+style will indent the closing parenthesis/brace/bracket at the same
+level as the opening line::
 
     l_two = [
         1,
@@ -54,40 +55,57 @@ parenthesis/brace/bracket at the same level::
         )
     }
 
-    def func_with_arguments_separate_lines(
+
+Funcion and method calls work similarly, but have two levels of
+indentation for the lines between the enclosing parentheses::
+
+    myobj.another_method_call(
             arg1,
             arg2,
             arg3,
             arg4,
             arg5,
             arg6
-        ):
-        pass
+    )
 
-
-    myobj.a_cooler_method_call(
-        arg1,
-        arg2,
-        arg3,
-        arg4,
-        arg5,
-        arg6
+    result = myfunc(
+            'ham',
+            'spam',
+            'eggs'
     )
 
 
-A major difference between this indentation style and the two previous
-styles is in the definition of functions and methods, where if the
-opening parenthesis ends the first line, all the parameter lines are
-indented by *two* levels past the opening line, while the closing
-parenthesis is indented only one level past the opening line::
+Statements ending with a ``:`` (colon) have two levels of indentation
+for lines between the enclosing parentheses. This includes function,
+method, and class declarations, if statements, and loops::
 
-    def func_with_arguments_separate_lines(
-            arg1,
-            arg2,
-            arg3,
-            arg4,
-            arg5,
-            arg6
+    class MyObj(
+            MySuperClass1,
+            MySuperClass2
         ):
-        pass
+
+        def func_with_arguments_separate_lines(
+                arg1,
+                arg2,
+                arg3,
+                arg4,
+                arg5,
+                arg6
+            ):
+
+            if (
+                    condition1 and
+                    condition2 and not
+                    condition3
+                ):
+                while (
+                        True is True and
+                        False is False
+                    ):
+                    for x in (
+                            1,
+                            2,
+                            3
+                        ):
+                        pass
 

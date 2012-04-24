@@ -133,14 +133,14 @@ function! GetPythonIndent(lnum)
     " }
     "
     " x = user.getdata1_(
-    "      a,
-    "      b,
-    "      c
+    "          a,
+    "          b,
+    "          c
     " )
     " user.login(
-    "     1,
-    "     2,
-    "     3
+    "         1,
+    "         2,
+    "         3
     " )
     call cursor(a:lnum, 1)
     let parlnum = s:SearchParensPair()
@@ -152,13 +152,13 @@ function! GetPythonIndent(lnum)
                 if match(getline(a:lnum), ')\s*:') != -1 &&
                             \ match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\)\(\s\+\|(\)') != -1
                     return indent(parlnum) + &sw
-                elseif match(getline(parlnum), '\(\a\|\d\|_\|\.)\s*(\s*$', 0) != -1
-                    return indent(parlnum) + &sw
+                "elseif match(getline(parlnum), '\(\a\|\d\|_\)\+\s*(\s*$') != -1
+                    "return indent(parlnum) + &sw
                 else
                     return indent(parlnum)
                 endif
             else
-                if match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\)\(\s\+\|(\)') != -1
+                if match(getline(parlnum), '\(\a\|\d\|_\)\+\s*(\s*$') != -1
                     return indent(parlnum) + &sw * 2
                 else
                     return indent(parlnum) + &sw
