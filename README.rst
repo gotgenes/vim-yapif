@@ -12,19 +12,16 @@ When continuing long lines, this style prefers to align the opening and
 closing parentheses/braces/brackets on the same column like so::
 
     l_one = [1, 2, 3
-             4, 5
-            ]
+             4, 5]
 
 
     def func_with_arguments_long_lines(arg1, arg2, arg3, arg4,
-                                       arg5, arg6
-                                      ):
+                                       arg5, arg6):
         pass
 
 
     myobj.a_method_call(arg1, arg2, arg3, arg4,
-                        arg5, arg6
-                       ):
+                        arg5, arg6):
         pass
 
 
@@ -56,7 +53,7 @@ level as the opening line::
     }
 
 
-Funcion and method calls similarly have a single level of indentation
+Function and method calls similarly have a single level of indentation
 for the lines between the enclosing parentheses::
 
     myobj.another_method_call(
