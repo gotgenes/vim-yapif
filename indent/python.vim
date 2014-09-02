@@ -5,7 +5,7 @@
 " Contributing Authors: Eric McSween <em@tomcomm.de>, Zhu Nianyang <zny2008@gmail.com>
 " Code Repository:  https://github.com/gotgenes/vim-yapif
 " Bug Tracker:      https://github.com/gotgenes/vim-yapif/issues
-" Last Modified:    2012-03-15
+" Last Modified:    2014-08-02
 
 
 " Only load this indent file when no other was loaded.
@@ -133,14 +133,14 @@ function! GetPythonIndent(lnum)
     " }
     "
     " x = user.getdata1_(
-    "          a,
-    "          b,
-    "          c
+    "     a,
+    "     b,
+    "     c
     " )
     " user.login(
-    "         1,
-    "         2,
-    "         3
+    "     1,
+    "     2,
+    "     3
     " )
     call cursor(a:lnum, 1)
     let parlnum = s:SearchParensPair()
@@ -148,18 +148,15 @@ function! GetPythonIndent(lnum)
         let parcol = col('.')
         let closing_paren = match(getline(a:lnum), '^\s*[])}]') != -1
         if match(getline(parlnum), '[([{]\s*$', parcol - 1) != -1
-            if closing_paren
-                if match(getline(a:lnum), ')\s*:') != -1 &&
-                            \ match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\)\(\s\+\|(\)') != -1
+            if match(getline(parlnum), '\(def\|class\|if\|elif\|while\|for\|except\|with\)\(\s\+\|(\)') != -1
+                if closing_paren && match(getline(a:lnum), '):\s*$') != -1
                     return indent(parlnum) + &sw
-                "elseif match(getline(parlnum), '\(\a\|\d\|_\)\+\s*(\s*$') != -1
-                    "return indent(parlnum) + &sw
                 else
-                    return indent(parlnum)
+                    return indent(parlnum) + &sw * 2
                 endif
             else
-                if match(getline(parlnum), '\(\a\|\d\|_\)\+\s*(\s*$') != -1
-                    return indent(parlnum) + &sw * 2
+                if closing_paren
+                    return indent(parlnum)
                 else
                     return indent(parlnum) + &sw
                 endif
